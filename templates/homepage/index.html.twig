@@ -1,7 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bienvenue sur Moussaka !{% endblock %}
+{% block title %}Bienvenue sur Moussaka{% endblock %}
 
 {% block body %}
-    {{ render(controller('App\\Artists\\Infrastructure\\Symfony\\Controller\\SongController::index')) }}
+    {% if app.user %}   
+        <div class="md-3">
+            {{ render(controller('App\\Artists\\Infrastructure\\Symfony\\Controller\\SongController::index')) }}
+        </div>
+        <div class="md-3">
+            {{ render(controller('App\\Artists\\Infrastructure\\Symfony\\Controller\\AlbumController::index')) }}
+        </div>
+        <div class="md-3">
+            {{ render(controller('App\\Artists\\Infrastructure\\Symfony\\Controller\\PlaylistController::index')) }}
+        </div>
+    {% endif %}
 {% endblock %}
